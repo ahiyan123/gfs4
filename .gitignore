@@ -1,0 +1,7 @@
+# Ignore all files in the storage lanes
+backend/gfs4_data/staging/*
+backend/gfs4_data/vault/*
+
+# But DO NOT ignore the .gitkeep files (this keeps the folders on GitHub)
+!backend/gfs4_data/staging/.gitkeep
+!backend/gfs4_data/vault/.gitkeep
