@@ -1,4 +1,4 @@
-const API = "http://bore.pub:4916/";
+const API = "http://bore.pub:4916";
 
 async function updateStats() {
     try {
