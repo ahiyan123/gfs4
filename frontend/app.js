@@ -1,4 +1,4 @@
-const API = "http://localhost:8000";
+const API = "https://vida-pseudonoble-winford.ngrok-free.dev/";
 
 async function updateStats() {
     try {
