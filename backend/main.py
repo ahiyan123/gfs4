@@ -11,6 +11,38 @@ from fastapi.middleware.cors import CORSMiddleware
 # 1. Add this at the top of main.py to read environment variables
 NODE_ID = os.getenv("GFS4_NODE_ID", "GFS4_GENERIC_NODE")
 
+import os
+import shutil
+import ollama
+
+# Define the physical paths on your node
+STAGING_DIR = "backend/gfs4_data/staging"
+VAULT_DIR = "backend/gfs4_data/vault"
+
+async def g4_sieve_agent(filename: str):
+    """
+    The Routing Engine
+    """
+    # 1. Locate the file in the loading dock
+    source_path = os.path.join(STAGING_DIR, filename)
+    
+    # 2. Ask Gemma 4 for a Security Verdict
+    prompt = f"Analyze file: '{filename}'. Is this a 'VAULT' (private/key) or 'STAGING' (general) file?"
+    
+    try:
+        response = ollama.generate(model='gemma4:e2b', prompt=prompt)
+        verdict = response['response'].strip().upper()
+
+        # 3. Execute the Physical Route
+        if "VAULT" in verdict:
+            target_path = os.path.join(VAULT_DIR, filename)
+            shutil.move(source_path, target_path)
+            print(f"SENTINEL: Routed {filename} to SECURE VAULT.")
+        else:
+            print(f"SIEVE: Maintained {filename} in STAGING LANE.")
+            
+    except Exception as e:
+        print(f"Routing Error: {e}")
 
 app = FastAPI(title="GFS4 Global Node")
 
