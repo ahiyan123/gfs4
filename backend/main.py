@@ -44,7 +44,7 @@ async def g4_sieve_agent(filename: str):
     except Exception as e:
         print(f"Routing Error: {e}")
 
-app = FastAPI(title="GFS4 Global Node")
+app = FastAPI(title="Global File System(GFS4)")
 
 # Production CORS
 app.add_middleware(
