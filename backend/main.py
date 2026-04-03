@@ -1,5 +1,6 @@
 !pip install ollama fastapi uvicorn python-multipart
-
+from dotenv import load_dotenv
+load_dotenv()
 import os
 import shutil
 import asyncio
