@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8"><title>GFS4 | Global File Storage</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono&family=Inter:wght@400;900&display=swap" rel="stylesheet">
+    <style>
+        body { font-family: 'Inter', sans-serif; background: #020617; color: #f8fafc; }
+        .mono { font-family: 'JetBrains Mono', monospace; }
+        .g4-card { background: rgba(15, 23, 42, 0.6); border: 1px solid rgba(51, 65, 85, 1); }
+    </style>
+</head>
+<body class="p-6">
+    <header class="max-w-7xl mx-auto flex justify-between items-center mb-12">
+        <div class="flex items-center gap-4">
+            <div class="bg-blue-600 px-4 py-1 font-black italic tracking-tighter">GFS4</div>
+            <h1 id="node-name" class="text-xs font-bold mono text-blue-500 uppercase">Connecting...</h1>
+        </div>
+        <div class="text-[10px] mono text-slate-500 uppercase tracking-[0.4em]">Pioneer doesn't know to rest</div>
+    </header>
+
+    <main class="max-w-7xl mx-auto grid grid-cols-1 lg:grid-cols-3 gap-8">
+        <div class="lg:col-span-2 space-y-6">
+            <div id="dropzone" class="g4-card p-20 rounded-[3rem] text-center border-dashed border-2 hover:border-blue-500 transition-all cursor-pointer">
+                <input type="file" id="fileInput" class="hidden" multiple>
+                <div class="text-5xl mb-4">🌐</div>
+                <h2 class="text-2xl font-black uppercase tracking-tighter">Ingest Stream</h2>
+            </div>
+            <div class="g4-card rounded-3xl overflow-hidden">
+                <div class="bg-slate-900/50 p-4 border-b border-slate-800 text-[10px] mono font-bold text-blue-400">G4_SENTINEL_REASONING</div>
+                <div id="console" class="p-6 h-64 overflow-y-auto mono text-xs space-y-2 opacity-80"></div>
+            </div>
+        </div>
+
+        <aside class="space-y-6">
+            <div class="bg-blue-600 p-10 rounded-[3rem] shadow-2xl">
+                <p class="text-[10px] font-bold uppercase mb-8 opacity-60">Everyone isn't same</p>
+                <button id="micBtn" class="w-full bg-white text-blue-900 py-4 rounded-2xl font-black uppercase text-xs tracking-widest">Initialize Voice</button>
+            </div>
+            <div class="g4-card p-8 rounded-[3rem]">
+                <h3 class="text-[10px] font-bold text-slate-500 uppercase mb-6 tracking-widest">Vault Status</h3>
+                <div class="space-y-6">
+                    <div>
+                        <div class="flex justify-between text-[10px] mb-2 font-bold"><span>VAULT</span><span id="v-count">0</span></div>
+                        <div class="w-full bg-slate-800 h-1.5 rounded-full"><div id="v-bar" class="bg-red-500 h-full transition-all duration-1000" style="width:0%"></div></div>
+                    </div>
+                    <div>
+                        <div class="flex justify-between text-[10px] mb-2 font-bold text-blue-400"><span>STAGING</span><span id="s-count">0</span></div>
+                        <div class="w-full bg-slate-800 h-1.5 rounded-full"><div id="s-bar" class="bg-blue-400 h-full transition-all duration-1000" style="width:0%"></div></div>
+                    </div>
+                </div>
+            </div>
+        </aside>
+    </main>
+    <script src="app.js"></script>
+</body>
+</html>
