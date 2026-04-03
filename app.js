@@ -1,4 +1,4 @@
-const API = "https://vida-pseudonoble-winford.ngrok-free.dev/";
+const API = "http://bore.pub:4916/";
 
 async function updateStats() {
     try {
